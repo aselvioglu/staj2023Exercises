@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vuejs ornek</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <input type="text" @keypress="keypressParam($event)"/>
+    <button @click="arttir()">increase</button>
+    <p>{{ sayi }}</p>
+
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            sayi: 0
+        },
+        methods: {
+            arttir() {
+                this.sayi++;
+            },
+            keypressParam(e) {
+                if (e.keyCode === 13) {
+                    this.sayi += parseInt(e.target.value);
+                    e.target.value = ''; // Clear the input after using it
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
